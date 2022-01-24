@@ -619,6 +619,14 @@
 				"publisherDisplayName": "Microsoft",
 				"publisherId": "998b010b-e2af-44a5-a6cd-0b5fd3b9b6f8"
 			}
+		},
+		{
+			"name": "ms-toolsai.jupyter",
+			"version": "2021.8.1054968649",
+			"repo": "https://github.com/microsoft/vscode-jupyter",
+			"metadata": {
+				"publisherDisplayName": "Microsoft"
+			}
 		}
 	],
 	"extensionsGallery": {
