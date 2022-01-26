@@ -27,6 +27,7 @@ exports.dirs = [
 	'extensions/jake',
 	'extensions/json-language-features',
 	'extensions/json-language-features/server',
+	'extensions/leapide-flyout-vscode-extension',
 	'extensions/markdown-language-features',
 	'extensions/markdown-math',
 	'extensions/merge-conflict',

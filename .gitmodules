@@ -1,0 +1,3 @@
+[submodule "extensions/leapide-flyout-vscode-extension"]
+	path = extensions/leapide-flyout-vscode-extension
+	url = https://github.com/dwave-examples/leapide-flyout-vscode-extension.git
