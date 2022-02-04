@@ -146,23 +146,9 @@
           "group": "gitpod@10"
         },
         {
-          "command": "gitpod.open.documentation",
-          "group": "gitpod@20"
-        },
-        {
           "command": "gitpod.takeSnapshot",
           "group": "gitpod@30",
           "when": "gitpod.workspaceOwned == true"
-        },
-        {
-          "command": "gitpod.shareWorkspace",
-          "group": "gitpod@40",
-          "when": "gitpod.workspaceOwned == true && gitpod.workspaceShared == false"
-        },
-        {
-          "command": "gitpod.stopSharingWorkspace",
-          "group": "gitpod@40",
-          "when": "gitpod.workspaceOwned == true && gitpod.workspaceShared == true"
         },
         {
           "command": "gitpod.stop.ws",
