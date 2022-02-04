@@ -75,16 +75,6 @@
         "enablement": "gitpod.workspaceOwned == true"
       },
       {
-        "command": "gitpod.shareWorkspace",
-        "title": "%shareWorkspace%",
-        "enablement": "gitpod.workspaceOwned == true && gitpod.workspaceShared == false"
-      },
-      {
-        "command": "gitpod.stopSharingWorkspace",
-        "title": "%stopSharingWorkspace%",
-        "enablement": "gitpod.workspaceOwned == true && gitpod.workspaceShared == true"
-      },
-      {
         "command": "gitpod.ports.openBrowser",
         "title": "%openBrowser%",
         "icon": "$(globe)"
@@ -235,16 +225,6 @@
           "command": "gitpod.takeSnapshot",
           "group": "remote_00_gitpod_navigation@120",
           "when": "gitpod.workspaceOwned == true"
-        },
-        {
-          "command": "gitpod.shareWorkspace",
-          "group": "remote_00_gitpod_navigation@130",
-          "when": "gitpod.workspaceOwned == true && gitpod.workspaceShared == false"
-        },
-        {
-          "command": "gitpod.stopSharingWorkspace",
-          "group": "remote_00_gitpod_navigation@130",
-          "when": "gitpod.workspaceOwned == true && gitpod.workspaceShared == true"
         }
       ],
       "view/item/context": [

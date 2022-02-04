@@ -13,8 +13,6 @@
 	"stopWorkspace": "Stop Workspace",
 	"extendTimeout": "Extend Workspace Timeout",
 	"takeSnapshot": "Share Workspace Snapshot",
-	"shareWorkspace": "Gitpod: Share Running Workspace",
-	"stopSharingWorkspace": "Gitpod: Stop Sharing Running Workspace",
 	"openBrowser": "Open Browser",
 	"openPreview": "Open Preview",
 	"makePrivate": "Make Private",
