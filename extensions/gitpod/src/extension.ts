@@ -191,9 +191,6 @@ export async function activate(context: vscode.ExtensionContext) {
 		context.subscriptions.push(vscode.commands.registerCommand('gitpod.stop.ws', () =>
 			gitpodService.server.stopWorkspace(workspaceId)
 		));
-		context.subscriptions.push(vscode.commands.registerCommand('gitpod.upgradeSubscription', () =>
-			vscode.env.openExternal(vscode.Uri.parse(new GitpodHostUrl(gitpodHost).asUpgradeSubscription().toString()))
-		));
 		context.subscriptions.push(vscode.commands.registerCommand('gitpod.takeSnapshot', async () => {
 			try {
 				const snapshotId = await vscode.window.withProgress({

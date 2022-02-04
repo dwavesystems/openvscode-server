@@ -61,11 +61,6 @@
         "title": "%reportIssue%"
       },
       {
-        "command": "gitpod.upgradeSubscription",
-        "title": "%upgradeSubscription%",
-        "enablement": "gitpod.workspaceOwned == true"
-      },
-      {
         "command": "gitpod.ExtendTimeout",
         "title": "%extendTimeout%",
         "enablement": "gitpod.workspaceOwned == true"
@@ -162,15 +157,6 @@
           "group": "navigation@10"
         },
         {
-          "command": "gitpod.open.accessControl",
-          "group": "navigation@20"
-        },
-        {
-          "command": "gitpod.upgradeSubscription",
-          "group": "navigation@30",
-          "when": "gitpod.workspaceOwned == true"
-        },
-        {
           "command": "gitpod.ExtendTimeout",
           "group": "navigation@50",
           "when": "gitpod.workspaceOwned == true"
@@ -227,11 +213,6 @@
         {
           "command": "gitpod.reportIssue",
           "group": "remote_00_gitpod_navigation@90"
-        },
-        {
-          "command": "gitpod.upgradeSubscription",
-          "group": "remote_00_gitpod_navigation@100",
-          "when": "gitpod.workspaceOwned == true"
         },
         {
           "command": "gitpod.ExtendTimeout",
