@@ -165,14 +165,17 @@ export async function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.open.documentation', () =>
 		vscode.env.openExternal(vscode.Uri.parse('https://www.gitpod.io/docs'))
 	));
+	context.subscriptions.push(vscode.commands.registerCommand('gitpod.open.leapIdeDocumentation', () =>
+		vscode.env.openExternal(vscode.Uri.parse('https://docs.dwavesys.com/docs/latest/doc_ide_user.html'))
+	));
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.open.community', () =>
 		vscode.env.openExternal(vscode.Uri.parse('https://community.gitpod.io'))
 	));
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.open.follow', () =>
-		vscode.env.openExternal(vscode.Uri.parse('https://twitter.com/gitpod'))
+		vscode.env.openExternal(vscode.Uri.parse('https://twitter.com/dwavesys'))
 	));
-	context.subscriptions.push(vscode.commands.registerCommand('gitpod.reportIssue', () =>
-		vscode.env.openExternal(vscode.Uri.parse('https://github.com/gitpod-io/gitpod/issues/new/choose'))
+	context.subscriptions.push(vscode.commands.registerCommand('gitpod.contactUs', () =>
+		vscode.env.openExternal(vscode.Uri.parse('https://www.dwavesys.com/company/contact'))
 	));
 
 	const communityStatusBarItem = vscode.window.createStatusBarItem('gitpod.community', vscode.StatusBarAlignment.Right, -100);

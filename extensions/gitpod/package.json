@@ -49,6 +49,10 @@
         "title": "%openDocumentation%"
       },
       {
+        "command": "gitpod.open.leapIdeDocumentation",
+        "title": "%openLeapIdeDocumentation%"
+      },
+      {
         "command": "gitpod.open.follow",
         "title": "%openFollow%"
       },
@@ -57,8 +61,8 @@
         "title": "%openCommunity%"
       },
       {
-        "command": "gitpod.reportIssue",
-        "title": "%reportIssue%"
+        "command": "gitpod.contactUs",
+        "title": "%contactUs%"
       },
       {
         "command": "gitpod.ExtendTimeout",
@@ -172,8 +176,12 @@
           "group": "z_about2@20"
         },
         {
-          "command": "gitpod.reportIssue",
+          "command": "gitpod.contactUs",
           "group": "z_about2@30"
+        },
+        {
+          "command": "gitpod.open.leapIdeDocumentation",
+          "group": "z_about2@40"
         }
       ],
       "statusBar/remoteIndicator": [
@@ -203,6 +211,10 @@
           "group": "remote_00_gitpod_navigation@60"
         },
         {
+          "command": "gitpod.open.leapIdeDocumentation",
+          "group": "remote_00_gitpod_navigation@65"
+        },
+        {
           "command": "gitpod.open.follow",
           "group": "remote_00_gitpod_navigation@70"
         },
@@ -211,7 +223,7 @@
           "group": "remote_00_gitpod_navigation@80"
         },
         {
-          "command": "gitpod.reportIssue",
+          "command": "gitpod.contactUs",
           "group": "remote_00_gitpod_navigation@90"
         },
         {
