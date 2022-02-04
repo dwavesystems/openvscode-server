@@ -311,14 +311,14 @@
       "remote": [
         {
           "id": "gitpod.workspace",
-          "name": "Gitpod Workspace"
+          "name": "Leap IDE Workspace"
         }
       ]
     },
     "authentication": [
       {
         "id": "gitpod",
-        "label": "Gitpod"
+        "label": "Leap"
       },
       {
         "id": "github",
