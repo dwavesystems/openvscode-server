@@ -712,7 +712,15 @@ async function doStart(): Promise<IDisposable> {
 			}
 		},
 		configurationDefaults: {
+			'workbench.preferredDarkColorTheme': 'Leap IDE Dark',
+			'workbench.preferredLightColorTheme': 'Leap IDE Light',
 			'workbench.colorTheme': 'Leap IDE Dark',
+			'workbench.tree.indent': 16,		// double the default value
+			'workbench.tree.renderIndentGuides': 'always',
+			'editor.minimap.enabled': false,
+			'terminal.integrated.copyOnSelection': true,
+			'extensions.autoCheckUpdates': false,
+			'extensions.autoUpdate': false,
 		},
 		developmentOptions: {
 			logLevel: logLevel ? parseLogLevel(logLevel) : undefined
