@@ -277,3 +277,21 @@ body.web {
 	height: 12px;
 	background-image: url(./code-icon.svg) !important;
 }
+
+.codicon-leap {
+	width: 49px;
+	height: 18px;
+	background-image: url(./leap-logo.svg) !important;
+}
+
+.codicon-leapide {
+	width: 14px;
+	height: 14px;
+	background-image: url(./leapide-icon.svg) !important;
+}
+
+.codicon-dwave-leap {
+	width: 14px;
+	height: 14px;
+	background-image: url(./dwave-leap-icon.svg) !important;
+}
