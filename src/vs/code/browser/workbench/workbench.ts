@@ -687,35 +687,32 @@ async function doStart(): Promise<IDisposable> {
 			tooltip: 'Editing on Gitpod'
 		},
 		initialColorTheme: {
-			themeType: ColorScheme.LIGHT,
-			// should be aligned with extensions/theme-defaults/themes/gitpod-light-color-theme.json
+			themeType: ColorScheme.DARK,
+			// should be aligned with extensions/theme-defaults/themes/dark_vs.json
 			colors: {
-				'statusBarItem.remoteBackground': '#FF8A00',
-				'statusBarItem.remoteForeground': '#f9f9f9',
-				'statusBar.background': '#F3F3F3',
-				'statusBar.foreground': '#292524',
-				'statusBar.noFolderBackground': '#FF8A00',
-				'statusBar.debuggingBackground': '#FF8A00',
-				'sideBar.background': '#fcfcfc',
-				'sideBarSectionHeader.background': '#f9f9f9',
-				'activityBar.background': '#f9f9f9',
-				'activityBar.foreground': '#292524',
-				'editor.background': '#ffffff',
-				'button.background': '#FF8A00',
-				'button.foreground': '#ffffff',
-				'list.activeSelectionBackground': '#e7e5e4',
-				'list.activeSelectionForeground': '#292524',
-				'list.inactiveSelectionForeground': '#292524',
-				'list.inactiveSelectionBackground': '#F9F9F9',
-				'minimap.background': '#FCFCFC',
-				'minimapSlider.activeBackground': '#F9F9F9',
-				'tab.inactiveBackground': '#F9F9F9',
-				'editor.selectionBackground': '#FFE4BC',
-				'editor.inactiveSelectionBackground': '#FFE4BC'
+				'editor.background': '#1E1E1E',
+				'editor.foreground': '#D4D4D4',
+				'editor.inactiveSelectionBackground': '#3A3D41',
+				'editorIndentGuide.background': '#404040',
+				'editorIndentGuide.activeBackground': '#707070',
+				'editor.selectionHighlightBackground': '#ADD6FF26',
+				'list.dropBackground': '#383B3D',
+				'activityBarBadge.background': '#007ACC',
+				'sideBarTitle.foreground': '#BBBBBB',
+				'input.placeholderForeground': '#A6A6A6',
+				'menu.background': '#252526',
+				'menu.foreground': '#CCCCCC',
+				'statusBarItem.remoteForeground': '#FFF',
+				'statusBarItem.remoteBackground': '#16825D',
+				'ports.iconRunningProcessForeground': '#369432',
+				'sideBarSectionHeader.background': '#0000',
+				'sideBarSectionHeader.border': '#ccc3',
+				'tab.lastPinnedBorder': '#ccc3',
+				'list.activeSelectionIconForeground': '#FFF'
 			}
 		},
 		configurationDefaults: {
-			'workbench.colorTheme': 'Gitpod Light',
+			'workbench.colorTheme': 'Visual Studio Dark',
 		},
 		developmentOptions: {
 			logLevel: logLevel ? parseLogLevel(logLevel) : undefined
