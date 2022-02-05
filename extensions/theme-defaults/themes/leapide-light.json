@@ -1,0 +1,7 @@
+{
+	"name": "Gitpod Light",
+	"include": "./light_vs.json",
+	"colors": {
+        "statusBarItem.remoteBackground": "#2E3041"
+	}
+}

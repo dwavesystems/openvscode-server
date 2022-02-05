@@ -14,6 +14,18 @@
   "contributes": {
     "themes": [
       {
+        "id": "Leap IDE Dark",
+        "label": "%leapideDark%",
+        "uiTheme": "vs-dark",
+        "path": "./themes/leapide-dark.json"
+      },
+      {
+        "id": "Leap IDE Light",
+        "label": "%leapideLight%",
+        "uiTheme": "vs",
+        "path": "./themes/leapide-light.json"
+      },
+      {
         "id": "Gitpod Dark",
         "label": "%gitpodDark%",
         "uiTheme": "vs-dark",
@@ -26,13 +38,13 @@
         "path": "./themes/gitpod-light-color-theme.json"
       },
       {
-        "id": "Default Dark+",
+        "id": "Dark+",
         "label": "%darkPlusColorThemeLabel%",
         "uiTheme": "vs-dark",
         "path": "./themes/dark_plus.json"
       },
       {
-        "id": "Default Light+",
+        "id": "Light+",
         "label": "%lightPlusColorThemeLabel%",
         "uiTheme": "vs",
         "path": "./themes/light_plus.json"

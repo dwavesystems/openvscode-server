@@ -688,7 +688,7 @@ async function doStart(): Promise<IDisposable> {
 		},
 		initialColorTheme: {
 			themeType: ColorScheme.DARK,
-			// should be aligned with extensions/theme-defaults/themes/dark_vs.json
+			// should be aligned with extensions/theme-defaults/themes/leapide-dark.json
 			colors: {
 				'editor.background': '#1E1E1E',
 				'editor.foreground': '#D4D4D4',
@@ -703,7 +703,7 @@ async function doStart(): Promise<IDisposable> {
 				'menu.background': '#252526',
 				'menu.foreground': '#CCCCCC',
 				'statusBarItem.remoteForeground': '#FFF',
-				'statusBarItem.remoteBackground': '#16825D',
+				'statusBarItem.remoteBackground': '#007ACC',
 				'ports.iconRunningProcessForeground': '#369432',
 				'sideBarSectionHeader.background': '#0000',
 				'sideBarSectionHeader.border': '#ccc3',
@@ -712,7 +712,7 @@ async function doStart(): Promise<IDisposable> {
 			}
 		},
 		configurationDefaults: {
-			'workbench.colorTheme': 'Visual Studio Dark',
+			'workbench.colorTheme': 'Leap IDE Dark',
 		},
 		developmentOptions: {
 			logLevel: logLevel ? parseLogLevel(logLevel) : undefined

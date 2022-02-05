@@ -1,0 +1,7 @@
+{
+	"name": "Leap IDE Dark",
+	"include": "./dark_vs.json",
+	"colors": {
+        "statusBarItem.remoteBackground": "#2E3041"
+	}
+}
