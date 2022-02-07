@@ -178,14 +178,6 @@ export async function activate(context: vscode.ExtensionContext) {
 		vscode.env.openExternal(vscode.Uri.parse('https://www.dwavesys.com/company/contact'))
 	));
 
-	const communityStatusBarItem = vscode.window.createStatusBarItem('gitpod.community', vscode.StatusBarAlignment.Right, -100);
-	communityStatusBarItem.name = 'Chat with us on Discourse';
-	context.subscriptions.push(communityStatusBarItem);
-	communityStatusBarItem.text = '$(comment-discussion)';
-	communityStatusBarItem.tooltip = 'Chat with us on Discourse';
-	communityStatusBarItem.command = 'gitpod.open.community';
-	communityStatusBarItem.show();
-
 	(async () => {
 		const workspaceOwned = await pendingWorkspaceOwned;
 		if (!workspaceOwned) {
