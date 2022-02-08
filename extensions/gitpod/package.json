@@ -181,6 +181,10 @@
           "when": "gitpod.workspaceOwned == true"
         },
         {
+          "command": "gitpod.open.dashboard",
+          "group": "remote_00_gitpod_navigation@50"
+        },
+        {
           "command": "gitpod.open.settings",
           "group": "remote_00_gitpod_navigation@20"
         },
@@ -193,24 +197,16 @@
           "group": "remote_00_gitpod_navigation@40"
         },
         {
-          "command": "gitpod.open.dashboard",
-          "group": "remote_00_gitpod_navigation@50"
+          "command": "gitpod.open.leapIdeDocumentation",
+          "group": "remote_00_gitpod_navigation@65"
         },
         {
           "command": "gitpod.open.documentation",
           "group": "remote_00_gitpod_navigation@60"
         },
         {
-          "command": "gitpod.open.leapIdeDocumentation",
-          "group": "remote_00_gitpod_navigation@65"
-        },
-        {
           "command": "gitpod.open.follow",
           "group": "remote_00_gitpod_navigation@70"
-        },
-        {
-          "command": "gitpod.open.community",
-          "group": "remote_00_gitpod_navigation@80"
         },
         {
           "command": "gitpod.contactUs",
