@@ -683,8 +683,8 @@ async function doStart(): Promise<IDisposable> {
 		homeIndicator,
 		windowIndicator: {
 			onDidChange: Event.None,
-			label: `$(gitpod) Gitpod`,
-			tooltip: 'Editing on Gitpod'
+			label: `$(leap)`,
+			tooltip: 'Leap IDE'
 		},
 		initialColorTheme: {
 			themeType: ColorScheme.DARK,
