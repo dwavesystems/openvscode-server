@@ -18,7 +18,8 @@
     "*",
     "onAuthenticationRequest:gitpod",
     "onAuthenticationRequest:github",
-    "onCommand:gitpod.api.preview"
+    "onCommand:gitpod.api.preview",
+    "onCommand:gitpod.api.openProblemInspector"
   ],
   "main": "./out/extension.js",
   "contributes": {

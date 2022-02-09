@@ -567,6 +567,9 @@ export async function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.api.preview', (url: string) =>
 		previewUrl(url)
 	));
+	context.subscriptions.push(vscode.commands.registerCommand('gitpod.api.openProblemInspector', (url: string) =>
+		openProblemInspector(url)
+	));
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.ports.openBrowser', (port: GitpodWorkspacePort) =>
 		port.openExternal()
 	));
@@ -645,6 +648,14 @@ export async function activate(context: vscode.ExtensionContext) {
 		await vscode.commands.executeCommand('simpleBrowser.api.open', url, {
 			viewColumn: vscode.ViewColumn.Beside,
 			preserveFocus: true
+		});
+	}
+	async function openProblemInspector(url: string): Promise<void> {
+		await vscode.commands.executeCommand('simpleBrowser.api.open', url, {
+			viewColumn: vscode.ViewColumn.Beside,
+			preserveFocus: true,
+			kioskMode: true,
+			title: "Problem Inspector"
 		});
 	}
 	context.subscriptions.push(gitpodWorkspaceTreeDataProvider.onDidExposeServedPort(port => {
