@@ -70,6 +70,15 @@ button:focus {
 	margin: 0.4em 1em;
 }
 
+.header.kiosk {
+	margin: 0;
+}
+
+.header.kiosk .controls,
+.header.kiosk .url-input {
+	display: none;
+}
+
 .url-input {
 	flex: 1;
 }

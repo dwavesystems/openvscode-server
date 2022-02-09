@@ -12,6 +12,8 @@ const localize = nls.loadMessageBundle();
 export interface ShowOptions {
 	readonly preserveFocus?: boolean;
 	readonly viewColumn?: vscode.ViewColumn;
+	readonly kioskMode?: boolean;
+	readonly title?: string;
 }
 
 export class SimpleBrowserView extends Disposable {
@@ -31,7 +33,9 @@ export class SimpleBrowserView extends Disposable {
 	) {
 		super();
 
-		this._webviewPanel = this._register(vscode.window.createWebviewPanel(SimpleBrowserView.viewType, SimpleBrowserView.title, {
+		const title = showOptions?.title ?? SimpleBrowserView.title;
+
+		this._webviewPanel = this._register(vscode.window.createWebviewPanel(SimpleBrowserView.viewType, title, {
 			viewColumn: showOptions?.viewColumn ?? vscode.ViewColumn.Active,
 			preserveFocus: showOptions?.preserveFocus
 		}, {
@@ -69,7 +73,7 @@ export class SimpleBrowserView extends Disposable {
 			}
 		}));
 
-		this.show(url);
+		this.show(url, showOptions);
 	}
 
 	public override dispose() {
@@ -78,11 +82,11 @@ export class SimpleBrowserView extends Disposable {
 	}
 
 	public show(url: string, options?: ShowOptions) {
-		this._webviewPanel.webview.html = this.getHtml(url);
+		this._webviewPanel.webview.html = this.getHtml(url, options?.kioskMode);
 		this._webviewPanel.reveal(options?.viewColumn, options?.preserveFocus);
 	}
 
-	private getHtml(url: string) {
+	private getHtml(url: string, kioskMode?: boolean) {
 		const configuration = vscode.workspace.getConfiguration('simpleBrowser');
 
 		const nonce = new Date().getTime() + '' + new Date().getMilliseconds();
@@ -90,6 +94,7 @@ export class SimpleBrowserView extends Disposable {
 		const mainJs = this.extensionResourceUrl('media', 'index.js');
 		const mainCss = this.extensionResourceUrl('media', 'main.css');
 		const codiconsUri = this.extensionResourceUrl('media', 'codicon.css');
+		const displayMode = kioskMode ? 'kiosk' : 'normal';
 
 		return /* html */ `<!DOCTYPE html>
 			<html>
@@ -113,7 +118,7 @@ export class SimpleBrowserView extends Disposable {
 				<link rel="stylesheet" type="text/css" href="${codiconsUri}">
 			</head>
 			<body>
-				<header class="header">
+				<header class="header ${displayMode}">
 					<nav class="controls">
 						<button
 							title="${localize('control.back.title', "Back")}"
