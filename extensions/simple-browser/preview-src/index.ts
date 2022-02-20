@@ -41,6 +41,13 @@ window.addEventListener('message', e => {
 				toggleFocusLockIndicatorEnabled(e.data.enabled);
 				break;
 			}
+		case 'openExternal':
+			{
+				if (settings.kioskMode) {
+					vscode.postMessage({type: e.data.type, url: e.data.url});
+				}
+				break;
+			}
 	}
 });
 

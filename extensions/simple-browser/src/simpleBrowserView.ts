@@ -111,7 +111,8 @@ export class SimpleBrowserView extends Disposable {
 
 				<meta id="simple-browser-settings" data-settings="${escapeAttribute(JSON.stringify({
 			url: url,
-			focusLockEnabled: configuration.get<boolean>('focusLockIndicator.enabled', true)
+			focusLockEnabled: configuration.get<boolean>('focusLockIndicator.enabled', true),
+			kioskMode: kioskMode
 		}))}">
 
 				<link rel="stylesheet" type="text/css" href="${mainCss}">
