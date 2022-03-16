@@ -239,7 +239,7 @@ const terminalConfiguration: IConfigurationNode = {
 				localize('terminal.integrated.gpuAcceleration.off', "Disable GPU acceleration within the terminal."),
 				localize('terminal.integrated.gpuAcceleration.canvas', "Use the fallback canvas renderer within the terminal. This uses a 2d context instead of webgl and may be better on some systems.")
 			],
-			default: 'auto',
+			default: 'off',
 			description: localize('terminal.integrated.gpuAcceleration', "Controls whether the terminal will leverage the GPU to do its rendering.")
 		},
 		[TerminalSettingId.RightClickBehavior]: {
