@@ -38,7 +38,7 @@ window.addEventListener('message', e => {
 			}
 		case 'didChangeFocusLockIndicatorEnabled':
 			{
-				toggleFocusLockIndicatorEnabled(e.data.enabled);
+				toggleFocusLockIndicatorEnabled(!settings.kioskMode && e.data.enabled);
 				break;
 			}
 		case 'openExternal':
@@ -94,7 +94,7 @@ onceDocumentLoaded(() => {
 	navigateTo(settings.url);
 	input.value = settings.url;
 
-	toggleFocusLockIndicatorEnabled(settings.focusLockIndicatorEnabled);
+	toggleFocusLockIndicatorEnabled(!settings.kioskMode && settings.focusLockIndicatorEnabled);
 
 	function navigateTo(rawUrl: string): void {
 		try {
