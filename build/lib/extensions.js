@@ -250,6 +250,44 @@ function packageLocalExtensionsStream(forWeb) {
         .pipe(util2.setExecutableBit(['**/*.sh'])));
 }
 exports.packageLocalExtensionsStream = packageLocalExtensionsStream;
+
+function fromVSIX(extensionPath) {
+    const json = require('gulp-json-editor');
+    fancyLog('Unpacking extension:', ansiColors.yellow(`${extensionPath}`), '...');
+    const packageJsonFilter = filter('package.json', { restore: true });
+    return es.through()
+        .pipe(vzip.src(extensionPath))
+        .pipe(filter('extension/**'))
+        .pipe(rename(p => p.dirname = p.dirname.replace(/^extension\/?/, '')))
+        .pipe(packageJsonFilter)
+        .pipe(buffer())
+        .pipe(json({ __metadata: {} }))
+        .pipe(packageJsonFilter.restore);
+}
+exports.fromVSIX = fromVSIX;
+
+function packagePrebuiltExtensionsStream(forWeb) {
+    const prebuiltExtensions = glob.sync('extensions-prebuilt/*.vsix');
+    const prebuiltExtensionsStream = minifyExtensionResources(es.merge(...prebuiltExtensions
+        .map(extensionPath => {
+            const basename = path.basename(extensionPath);
+            const [name, _] = basename.split('@');
+            const input = fromVSIX(extensionPath)
+                .pipe(rename(p => p.dirname = `extensions/${name}/${p.dirname}`));
+            return updateExtensionPackageJSON(input, (data) => {
+                delete data.scripts;
+                delete data.dependencies;
+                delete data.devDependencies;
+                return data;
+            });
+    })));
+    return (prebuiltExtensionsStream
+        .pipe(util2.setExecutableBit(['**/*.sh'])));
+}
+exports.packagePrebuiltExtensionsStream = packagePrebuiltExtensionsStream;
+
+
+
 function packageMarketplaceExtensionsStream(forWeb) {
     const marketplaceExtensionsDescriptions = [
         ...builtInExtensions.filter(({ name }) => (forWeb ? !marketplaceWebExtensionsExclude.has(name) : true)),
