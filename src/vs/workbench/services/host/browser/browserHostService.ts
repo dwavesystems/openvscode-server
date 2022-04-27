@@ -26,9 +26,6 @@ import { IInstantiationService } from 'vs/platform/instantiation/common/instanti
 import { BeforeShutdownEvent, ILifecycleService } from 'vs/workbench/services/lifecycle/common/lifecycle';
 import { ILogService } from 'vs/platform/log/common/log';
 import { getWorkspaceIdentifier } from 'vs/workbench/services/workspaces/browser/workspaces';
-import { localize } from 'vs/nls';
-import Severity from 'vs/base/common/severity';
-import { IDialogService } from 'vs/platform/dialogs/common/dialogs';
 import { DomEmitter } from 'vs/base/browser/event';
 
 /**
@@ -106,7 +103,6 @@ export class BrowserHostService extends Disposable implements IHostService {
 		@IInstantiationService private readonly instantiationService: IInstantiationService,
 		@ILifecycleService private readonly lifecycleService: ILifecycleService,
 		@ILogService private readonly logService: ILogService,
-		@IDialogService private readonly dialogService: IDialogService
 	) {
 		super();
 
@@ -389,10 +385,7 @@ export class BrowserHostService extends Disposable implements IHostService {
 
 		const opened = await this.workspaceProvider.open(workspace, options);
 		if (!opened) {
-			const showResult = await this.dialogService.show(Severity.Warning, localize('unableToOpenExternal', "The browser interrupted the opening of a new tab or window. Press 'Open' to open it anyway."), [localize('open', "Open"), localize('cancel', "Cancel")], { cancelId: 2 });
-			if (showResult.choice === 0) {
-				await this.workspaceProvider.open(workspace, options);
-			}
+			await this.workspaceProvider.open(workspace, options);
 		}
 	}
 
