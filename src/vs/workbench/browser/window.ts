@@ -148,8 +148,8 @@ export class BrowserWindow extends Disposable {
 						const opened = windowOpenNoOpenerWithSuccess(href);
 						if (!opened) {
 							const showResult = await this.dialogService.show(
-								Severity.Warning,
-								localize('unableToOpenExternal', "The browser interrupted the opening of a new tab or window. Press 'Open' to open it anyway."),
+								Severity.Info,
+								localize('unableToOpenExternal', "The browser interrupted the opening of a new tab or window. Would you like to open it anyway?"),
 								[
 									localize('open', "Open"),
 									localize('learnMore', "Learn More"),

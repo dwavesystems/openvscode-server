@@ -389,7 +389,7 @@ export class BrowserHostService extends Disposable implements IHostService {
 
 		const opened = await this.workspaceProvider.open(workspace, options);
 		if (!opened) {
-			const showResult = await this.dialogService.show(Severity.Warning, localize('unableToOpenExternal', "The browser interrupted the opening of a new tab or window. Press 'Open' to open it anyway."), [localize('open', "Open"), localize('cancel', "Cancel")], { cancelId: 2 });
+			const showResult = await this.dialogService.show(Severity.Info, localize('unableToOpenExternal', "The browser interrupted the opening of a new tab or window. Would you like to open it anyway?"), [localize('open', "Open"), localize('cancel', "Cancel")], { cancelId: 2 });
 			if (showResult.choice === 0) {
 				await this.workspaceProvider.open(workspace, options);
 			}
