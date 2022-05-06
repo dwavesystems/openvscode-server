@@ -69,6 +69,32 @@ export async function activate(context: vscode.ExtensionContext) {
 	const gitpodApi = workspaceInfoResponse.getGitpodApi()!;
 	const workspaceContextUrl = vscode.Uri.parse(workspaceInfoResponse.getWorkspaceContextUrl());
 
+	//#region LeapIDE config update
+	(async () => {
+		// update `name` to `value` in "User settings" if user didn't explicitly set/modify it
+		function updateIfDefault(config: vscode.WorkspaceConfiguration, name: string, value: any) {
+			if (config.get(name) === config.inspect(name)?.defaultValue) {
+				config.update(name, value, vscode.ConfigurationTarget.Global);
+			}
+		}
+		let config = vscode.workspace.getConfiguration();
+
+		// NOTE: The following ReST settings assume `lextudio.restructuredtext@170.0.0`.
+		//       Some are deprecated in the latest version (currently that's v187).
+
+		// ReST lang server makes the editor too slow, it's not worth it. Also this prevents "install snooty/esbonio" notification
+		updateIfDefault(config, 'restructuredtext.languageServer.disabled', true);
+
+		// ReST linter is too slow: each linting call is a blocking shell exec (to rstcheck, doc8, etc)
+		updateIfDefault(config, 'restructuredtext.linter.disabled', true);
+
+		// Use 'docutils' for ReST live preview (sphinx is an overkill just for rendering readme).
+		// The weird empty string setting comes from https://docs.restructuredtext.net/articles/configuration.html#conf-py-path.
+		// This also prevents prompting user to select between sphinx (conf.py location) and docutils
+		updateIfDefault(config, 'restructuredtext.confPath', '');
+	})();
+	//#endregion
+
 	//#region server connection
 	const factory = new JsonRpcProxyFactory<GitpodServer>();
 	type UsedGitpodFunction = ['getWorkspace', 'openPort', 'stopWorkspace', 'setWorkspaceTimeout', 'getWorkspaceTimeout', 'getLoggedInUser', 'takeSnapshot', 'controlAdmission', 'sendHeartBeat'];
@@ -655,7 +681,7 @@ export async function activate(context: vscode.ExtensionContext) {
 			viewColumn: vscode.ViewColumn.Beside,
 			preserveFocus: true,
 			kioskMode: true,
-			title: "Problem Inspector"
+			title: 'Problem Inspector'
 		});
 	}
 	context.subscriptions.push(gitpodWorkspaceTreeDataProvider.onDidExposeServedPort(port => {
