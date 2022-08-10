@@ -221,10 +221,6 @@ async function installInitialExtensions(
 			const workspaceInfoResponse = await util.promisify(infoServiceClient.workspaceInfo.bind(infoServiceClient, new WorkspaceInfoRequest(), supervisorMetadata, {
 				deadline: Date.now() + supervisorDeadlines.long
 			}))();
-			const workspaceContextUrl = URI.parse(workspaceInfoResponse.getWorkspaceContextUrl());
-			if (/github\.com/i.test(workspaceContextUrl.authority)) {
-				extensions.push('github.vscode-pull-request-github');
-			}
 
 			let config: { vscode?: { extensions?: string[] } } | undefined;
 			try {
@@ -1085,7 +1081,6 @@ async function main(): Promise<void> {
 									const missingMachined = new Set<string>();
 									const lookup = new Set(param.extensions.map(({ id }) => id));
 									const uninstalled = new Set<string>([...lookup]);
-									lookup.add('github.vscode-pull-request-github');
 									const extensionIds = param.extensions.filter(({ version }) => version === undefined).map(({ id }) => id);
 									const extensionsWithIdAndVersion = param.extensions.filter(({ version }) => version !== undefined);
 									await Promise.all([
