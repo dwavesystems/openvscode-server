@@ -72,6 +72,7 @@ export interface IProductConfiguration {
 		readonly resourceUrlTemplate: string;
 		readonly controlUrl: string;
 		readonly recommendationsUrl: string;
+		readonly requestTimeout?: number;
 	};
 
 	readonly extensionTips?: { [id: string]: string; };

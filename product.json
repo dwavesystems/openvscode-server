@@ -509,7 +509,8 @@
 		"itemUrl": "https://open-vsx.org/vscode/item",
 		"resourceUrlTemplate": "",
 		"controlUrl": "",
-		"recommendationsUrl": ""
+		"recommendationsUrl": "",
+		"requestTimeout": 60000
 	},
 	"linkProtectionTrustedDomains": [
 		"https://open-vsx.org",

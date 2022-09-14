@@ -304,7 +304,8 @@ async function downloadInitialExtension(url: string, requestService: IRequestSer
 	const context = await requestService.request({
 		type: 'GET', url, headers: {
 			'Content-Type': '*/*' // GCP requires that the content-type header match those used during the signing operation (*/* in our case)
-		}
+		},
+		timeout: 60000
 	}, CancellationToken.None);
 	if (context.res.statusCode !== 200) {
 		const message = await asText(context);

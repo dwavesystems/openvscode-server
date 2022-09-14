@@ -368,6 +368,7 @@ export class ExtensionGalleryService implements IExtensionGalleryService {
 
 	private extensionsGalleryUrl: string | undefined;
 	private extensionsControlUrl: string | undefined;
+	private extensionsGalleryTimeout: number | undefined;
 
 	private readonly commonHeadersPromise: Promise<{ [key: string]: string; }>;
 
@@ -384,6 +385,7 @@ export class ExtensionGalleryService implements IExtensionGalleryService {
 		this.extensionsGalleryUrl = config && config.serviceUrl;
 		this.extensionsControlUrl = config && config.controlUrl;
 		this.commonHeadersPromise = resolveMarketplaceHeaders(productService.version, this.environmentService, this.fileService, storageService);
+		this.extensionsGalleryTimeout = config?.requestTimeout ?? 60000;
 	}
 
 	private api(path = ''): string {
@@ -556,6 +558,7 @@ export class ExtensionGalleryService implements IExtensionGalleryService {
 			context = await this.requestService.request({
 				type: 'POST',
 				url: this.api('/extensionquery'),
+				timeout: this.extensionsGalleryTimeout,
 				data,
 				headers
 			}, token);
@@ -605,6 +608,7 @@ export class ExtensionGalleryService implements IExtensionGalleryService {
 			await this.requestService.request({
 				type: 'POST',
 				url: this.api(`/publishers/${publisher}/extensions/${name}/${version}/stats?statType=${type}`),
+				timeout: this.extensionsGalleryTimeout,
 				headers
 			}, CancellationToken.None);
 		} catch (error) { /* Ignore */ }
@@ -706,7 +710,7 @@ export class ExtensionGalleryService implements IExtensionGalleryService {
 
 	private async getAsset(asset: IGalleryExtensionAsset, options: IRequestOptions = {}, token: CancellationToken = CancellationToken.None): Promise<IRequestContext> {
 		const commonHeaders = await this.commonHeadersPromise;
-		const baseOptions = { type: 'GET' };
+		const baseOptions = { type: 'GET', timeout: this.extensionsGalleryTimeout };
 		const headers = { ...commonHeaders, ...(options.headers || {}) };
 		options = { ...options, ...baseOptions, headers };
 
@@ -810,7 +814,11 @@ export class ExtensionGalleryService implements IExtensionGalleryService {
 			return [];
 		}
 
-		const context = await this.requestService.request({ type: 'GET', url: this.extensionsControlUrl }, CancellationToken.None);
+		const context = await this.requestService.request({
+			type: 'GET',
+			url: this.extensionsControlUrl,
+			timeout: this.extensionsGalleryTimeout
+		}, CancellationToken.None);
 		if (context.res.statusCode !== 200) {
 			throw new Error('Could not get extensions report.');
 		}
