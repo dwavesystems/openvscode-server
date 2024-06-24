@@ -177,6 +177,7 @@ export interface IFocusNotebookCellOptions {
 export interface ICommonNotebookEditor {
 	readonly creationOptions: INotebookEditorCreationOptions;
 	getCellOutputLayoutInfo(cell: IGenericCellViewModel): INotebookCellOutputLayoutInfo;
+	setScrollTop(scrollTop: number): void;
 	triggerScroll(event: IMouseWheelEvent): void;
 	getCellByInfo(cellInfo: ICommonCellInfo): IGenericCellViewModel;
 	getCellById(cellId: string): IGenericCellViewModel | undefined;
@@ -749,7 +750,6 @@ export interface MarkdownCellRenderTemplate extends BaseCellRenderTemplate {
 	foldingIndicator: HTMLElement;
 	focusIndicatorBottom: HTMLElement;
 	currentEditor?: ICodeEditor;
-	readonly useRenderer: boolean;
 }
 
 export interface CodeCellRenderTemplate extends BaseCellRenderTemplate {

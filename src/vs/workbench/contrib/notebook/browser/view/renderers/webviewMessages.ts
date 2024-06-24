@@ -46,6 +46,11 @@ export interface IOutputBlurMessage extends BaseToWebviewMessage {
 	readonly id: string;
 }
 
+export interface IScrollToRevealMessage extends BaseToWebviewMessage {
+	readonly type: 'scroll-to-reveal';
+	readonly scrollTop: number;
+}
+
 export interface IWheelMessage extends BaseToWebviewMessage {
 	readonly type: 'did-scroll-wheel';
 	readonly payload: any;
@@ -127,6 +132,12 @@ export interface ICellDragEndMessage extends BaseToWebviewMessage {
 
 export interface IInitializedMarkupMessage extends BaseToWebviewMessage {
 	readonly type: 'initializedMarkup';
+}
+
+export interface IRenderedMarkupMessage extends BaseToWebviewMessage {
+	readonly type: 'renderedMarkup';
+	readonly cellId: string;
+	readonly html: string;
 }
 
 export interface ITelemetryFoundRenderedMarkdownMath extends BaseToWebviewMessage {
@@ -326,6 +337,7 @@ export type FromWebviewMessage = WebviewIntialized |
 	IMouseLeaveMessage |
 	IOutputFocusMessage |
 	IOutputBlurMessage |
+	IScrollToRevealMessage |
 	IWheelMessage |
 	IScrollAckMessage |
 	IBlurOutputMessage |
@@ -342,6 +354,7 @@ export type FromWebviewMessage = WebviewIntialized |
 	ICellDropMessage |
 	ICellDragEndMessage |
 	IInitializedMarkupMessage |
+	IRenderedMarkupMessage |
 	ITelemetryFoundRenderedMarkdownMath |
 	ITelemetryFoundUnrenderedMarkdownMath;
 

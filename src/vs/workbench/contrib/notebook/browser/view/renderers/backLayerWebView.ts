@@ -520,6 +520,11 @@ var requirejs = (function() {
 						// console.log('ack top ', top, ' version: ', data.version, ' - ', date.getMinutes() + ':' + date.getSeconds() + ':' + date.getMilliseconds());
 						break;
 					}
+				case 'scroll-to-reveal':
+					{
+						this.notebookEditor.setScrollTop(data.scrollTop);
+						break;
+					}
 				case 'did-scroll-wheel':
 					{
 						this.notebookEditor.triggerScroll({
@@ -644,7 +649,14 @@ var requirejs = (function() {
 						this.notebookEditor.didEndDragMarkupCell(data.cellId);
 						break;
 					}
-
+				case 'renderedMarkup':
+					{
+						const cell = this.notebookEditor.getCellById(data.cellId);
+						if (cell instanceof MarkupCellViewModel) {
+							cell.renderedHtml = data.html;
+						}
+						break;
+					}
 				case 'telemetryFoundRenderedMarkdownMath':
 					{
 						this.telemetryService.publicLog2<{}, {}>('notebook/markdown/renderedLatex', {});
